@@ -3,16 +3,13 @@ import '@react-three/fiber';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Grid } from '@react-three/drei';
 import { useMemo, useState, useEffect } from 'react';
-// FIX: Corrected import path to use '@/' alias.
-import { useSimulationStore } from '@/store/simulationStore';
-// FIX: Corrected import path to use '@/' alias.
-import { generateLSystem, interpretLSystem, findBranchSubtree, BranchSegment } from '@/lib/lsystem';
-// FIX: Corrected import path to use '@/' alias.
-import { Tree3D } from '@/components/3d/Tree3D';
-// FIX: Corrected import path to use '@/' alias.
-import { isWebGLAvailable } from '@/lib/webglDetect';
 import { AlertCircle } from 'lucide-react';
-// FIX: Corrected import path to use '@/' alias.
+
+// FIX: Corrected import paths to use defined path aliases for consistent module resolution.
+import { useSimulationStore } from '@/store/simulationStore';
+import { generateLSystem, interpretLSystem, findBranchSubtree, BranchSegment } from '@/lib/lsystem';
+import { Tree3D } from '@/components/3d/Tree3D';
+import { isWebGLAvailable } from '@/lib/webglDetect';
 import { Card, CardContent } from '@/components/ui/card';
 
 // Helper to find the parent of a branch

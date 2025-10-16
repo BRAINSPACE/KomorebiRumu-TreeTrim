@@ -1,6 +1,7 @@
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
-// FIX: Corrected import path to use '@/' alias.
+
+// FIX: Corrected import path to use the '@/' alias for consistency.
 import { useSimulationStore } from '@/store/simulationStore';
 
 export async function exportToPDF() {

@@ -1,4 +1,4 @@
-// FIX: Corrected import path to use '@/' alias.
+// FIX: Corrected import paths to use the '@/' alias for consistency.
 import {
   Toast,
   ToastClose,
@@ -7,7 +7,6 @@ import {
   ToastTitle,
   ToastViewport,
 } from "@/components/ui/toast"
-// FIX: Corrected import path to use '@/' alias.
 import { useToast } from "@/hooks/use-toast"
 
 export function Toaster() {

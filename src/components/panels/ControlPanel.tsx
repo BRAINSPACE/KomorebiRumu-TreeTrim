@@ -1,30 +1,21 @@
 
 import { useQuery } from '@tanstack/react-query';
-// FIX: Corrected import path to use '@/' alias.
-import { useSimulationStore } from '@/store/simulationStore';
-// FIX: Corrected import path to use '@/' alias.
-import { Button } from '@/components/ui/button';
-// FIX: Corrected import path to use '@/' alias.
-import { Label } from '@/components/ui/label';
-// FIX: Corrected import path to use '@/' alias.
-import { Slider } from '@/components/ui/slider';
-// FIX: Corrected import path to use '@/' alias.
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-// FIX: Corrected import path to use '@/' alias.
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-// FIX: Corrected import path to use '@/' alias.
-import { Separator } from '@/components/ui/separator';
-// FIX: Corrected import path to use '@/' alias.
-import { Badge } from '@/components/ui/badge';
-// FIX: Corrected import path to use '@/' alias.
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
 import { InfoIcon, Scissors, RotateCcw, Download, Sparkles, AlertCircle } from 'lucide-react';
-// FIX: Corrected import path to use '@/' alias.
-import { exportToPDF } from '@/lib/pdfExport';
-import type { Species } from '@shared/schema';
 import { useState, useEffect, useCallback } from 'react';
 import { GoogleGenAI } from '@google/genai';
-// FIX: Corrected import path to use '@/' alias.
+import type { Species } from '@shared/schema';
+
+// FIX: Corrected import paths to use defined path aliases for consistent module resolution.
+import { useSimulationStore } from '@/store/simulationStore';
+import { Button } from '@/components/ui/button';
+import { Label } from '@/components/ui/label';
+import { Slider } from '@/components/ui/slider';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Separator } from '@/components/ui/separator';
+import { Badge } from '@/components/ui/badge';
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
+import { exportToPDF } from '@/lib/pdfExport';
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
 import speciesData from '@/data/species.json';
 

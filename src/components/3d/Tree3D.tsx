@@ -2,7 +2,7 @@
 import '@react-three/fiber';
 import { useMemo } from 'react';
 import * as THREE from 'three';
-// FIX: Corrected import path to use '@/' alias.
+// FIX: Corrected import path to use the '@/' alias for consistency.
 import { BranchSegment } from '@/lib/lsystem';
 
 interface Tree3DProps {

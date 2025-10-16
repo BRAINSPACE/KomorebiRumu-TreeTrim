@@ -1,6 +1,7 @@
 // This is a simplified implementation of the shadcn/ui use-toast hook.
 import * as React from "react"
-// FIX: Corrected import path to use '@/' alias.
+
+// FIX: Corrected import path to use the '@/' alias for consistency.
 import type { ToastActionElement, ToastProps } from "@/components/ui/toast"
 
 const TOAST_LIMIT = 5

@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as SeparatorPrimitive from "@radix-ui/react-separator"
 
-// FIX: Corrected import path to use '@/' alias.
+// FIX: Corrected import path to use the '@/' alias for consistency.
 import { cn } from "@/lib/utils"
 
 const Separator = React.forwardRef<

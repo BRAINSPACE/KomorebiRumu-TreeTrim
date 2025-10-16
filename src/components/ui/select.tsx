@@ -2,7 +2,7 @@ import * as React from "react"
 import * as SelectPrimitive from "@radix-ui/react-select"
 import { Check, ChevronDown } from "lucide-react"
 
-// FIX: Corrected import path to use '@/' alias.
+// FIX: Corrected import path to use the '@/' alias for consistency.
 import { cn } from "@/lib/utils"
 
 const Select = SelectPrimitive.Root

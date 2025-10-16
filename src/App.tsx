@@ -1,19 +1,13 @@
 import { QueryClientProvider } from "@tanstack/react-query";
-// FIX: Corrected import path to use '@/' alias.
+
+// FIX: Corrected import paths to use defined path aliases for consistent module resolution.
 import { Toaster } from "@/components/ui/toaster";
-// FIX: Corrected import path to use '@/' alias.
 import { TooltipProvider } from "@/components/ui/tooltip";
-// FIX: Corrected import path to use '@/' alias.
 import { ControlPanel } from "@/components/panels/ControlPanel";
-// FIX: Corrected import path to use '@/' alias.
 import { ControlScene } from "@/components/scenes/ControlScene";
-// FIX: Corrected import path to use '@/' alias.
 import { SimulationScene } from "@/components/scenes/SimulationScene";
-// FIX: Corrected import path to use '@/' alias.
 import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
-// FIX: Corrected import path to use '@/' alias.
 import { useSimulationStore } from "@/store/simulationStore";
-// FIX: Corrected import path to use '@/' alias for consistency.
 import { queryClient } from "@/lib/queryClient";
 
 function App() {

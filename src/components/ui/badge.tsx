@@ -1,7 +1,7 @@
 import * as React from "react"
 import { cva, type VariantProps } from "class-variance-authority"
 
-// FIX: Corrected import path to use '@/' alias.
+// FIX: Corrected import path to use the '@/' alias for consistency.
 import { cn } from "@/lib/utils"
 
 const badgeVariants = cva(
