@@ -3,8 +3,8 @@ import * as ToastPrimitives from "@radix-ui/react-toast"
 import { cva, type VariantProps } from "class-variance-authority"
 import { X } from "lucide-react"
 
-// FIX: Corrected import path to use the '@/' alias for consistency.
-import { cn } from "@/lib/utils"
+// fix: Use relative path for utils import
+import { cn } from "../../lib/utils"
 
 const ToastProvider = ToastPrimitives.Provider
 

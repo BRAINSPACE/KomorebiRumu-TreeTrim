@@ -1,8 +1,8 @@
 import * as React from "react"
 import * as TooltipPrimitive from "@radix-ui/react-tooltip"
 
-// FIX: Corrected import path to use the '@/' alias for consistency.
-import { cn } from "@/lib/utils"
+// fix: Use relative path for utils import
+import { cn } from "../../lib/utils"
 
 const TooltipProvider = TooltipPrimitive.Provider
 

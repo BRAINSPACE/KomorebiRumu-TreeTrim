@@ -2,8 +2,8 @@ import * as React from "react"
 import * as LabelPrimitive from "@radix-ui/react-label"
 import { cva, type VariantProps } from "class-variance-authority"
 
-// FIX: Corrected import path to use the '@/' alias for consistency.
-import { cn } from "@/lib/utils"
+// fix: Use relative path for utils import
+import { cn } from "../../lib/utils"
 
 const labelVariants = cva(
   "text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"

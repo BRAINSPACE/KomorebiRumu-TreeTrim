@@ -5,12 +5,12 @@ import { OrbitControls, Grid } from '@react-three/drei';
 import { useMemo, useState, useEffect } from 'react';
 import { AlertCircle } from 'lucide-react';
 
-// FIX: Corrected import paths to use defined path aliases for consistent module resolution.
-import { useSimulationStore } from '@/store/simulationStore';
-import { generateLSystem, interpretLSystem, findBranchSubtree, BranchSegment } from '@/lib/lsystem';
-import { Tree3D } from '@/components/3d/Tree3D';
-import { isWebGLAvailable } from '@/lib/webglDetect';
-import { Card, CardContent } from '@/components/ui/card';
+// fix: Use relative paths for imports
+import { useSimulationStore } from '../../store/simulationStore';
+import { generateLSystem, interpretLSystem, findBranchSubtree, BranchSegment } from '../../lib/lsystem';
+import { Tree3D } from '../3d/Tree3D';
+import { isWebGLAvailable } from '../../lib/webglDetect';
+import { Card, CardContent } from '../ui/card';
 
 // Helper to find the parent of a branch
 function findParent(node: BranchSegment, childId: string): BranchSegment | null {

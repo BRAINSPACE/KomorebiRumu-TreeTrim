@@ -1,8 +1,8 @@
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
-// FIX: Corrected import path to use the '@/' alias for consistency.
-import { useSimulationStore } from '@/store/simulationStore';
+// fix: Use relative path for store import
+import { useSimulationStore } from '../store/simulationStore';
 
 export async function exportToPDF() {
   const { selectedSpecies, iterations, angle, stepSize, thickness, prunedBranches } = useSimulationStore.getState();

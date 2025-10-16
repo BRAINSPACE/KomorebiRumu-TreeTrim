@@ -1,14 +1,14 @@
 import { QueryClientProvider } from "@tanstack/react-query";
 
-// FIX: Corrected import paths to use defined path aliases for consistent module resolution.
-import { Toaster } from "@/components/ui/toaster";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import { ControlPanel } from "@/components/panels/ControlPanel";
-import { ControlScene } from "@/components/scenes/ControlScene";
-import { SimulationScene } from "@/components/scenes/SimulationScene";
-import { LoadingOverlay } from "@/components/ui/LoadingOverlay";
-import { useSimulationStore } from "@/store/simulationStore";
-import { queryClient } from "@/lib/queryClient";
+// fix: Use relative paths for component and store imports
+import { Toaster } from "./components/ui/toaster";
+import { TooltipProvider } from "./components/ui/tooltip";
+import { ControlPanel } from "./components/panels/ControlPanel";
+import { ControlScene } from "./components/scenes/ControlScene";
+import { SimulationScene } from "./components/scenes/SimulationScene";
+import { LoadingOverlay } from "./components/ui/LoadingOverlay";
+import { useSimulationStore } from "./store/simulationStore";
+import { queryClient } from "./lib/queryClient";
 
 function App() {
   const isExporting = useSimulationStore((state) => state.isExporting);

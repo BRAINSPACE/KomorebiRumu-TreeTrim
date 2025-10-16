@@ -1,7 +1,7 @@
 import * as React from "react"
 
-// FIX: Corrected import path to use the '@/' alias for consistency.
-import { cn } from "@/lib/utils"
+// fix: Use relative path for utils import
+import { cn } from "../../lib/utils"
 
 const Card = React.forwardRef<
   HTMLDivElement,

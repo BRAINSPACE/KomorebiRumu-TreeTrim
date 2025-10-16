@@ -1,23 +1,23 @@
-
 import { useQuery } from '@tanstack/react-query';
 import { InfoIcon, Scissors, RotateCcw, Download, Sparkles, AlertCircle } from 'lucide-react';
 import { useState, useEffect, useCallback } from 'react';
 import { GoogleGenAI } from '@google/genai';
-import type { Species } from '@shared/schema';
+// fix: Use relative path for schema import
+import type { Species } from '../../shared/schema';
 
-// FIX: Corrected import paths to use defined path aliases for consistent module resolution.
-import { useSimulationStore } from '@/store/simulationStore';
-import { Button } from '@/components/ui/button';
-import { Label } from '@/components/ui/label';
-import { Slider } from '@/components/ui/slider';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Separator } from '@/components/ui/separator';
-import { Badge } from '@/components/ui/badge';
-import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip';
-import { exportToPDF } from '@/lib/pdfExport';
-import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert';
-import speciesData from '@/data/species.json';
+// fix: Use relative paths for component and store imports
+import { useSimulationStore } from '../../store/simulationStore';
+import { Button } from '../ui/button';
+import { Label } from '../ui/label';
+import { Slider } from '../ui/slider';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Separator } from '../ui/separator';
+import { Badge } from '../ui/badge';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import { exportToPDF } from '../../lib/pdfExport';
+import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
+import speciesData from '../../data/species.json';
 
 export function ControlPanel() {
   const {
@@ -130,6 +130,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
           <CardHeader className="pb-3">
             <CardTitle className="text-base flex items-center gap-2">
               Trädart
+              <TooltipProvider>
               <Tooltip>
                 <TooltipTrigger asChild>
                   <InfoIcon className="h-4 w-4 text-muted-foreground" data-testid="icon-species-info" />
@@ -141,6 +142,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
                   </p>
                 </TooltipContent>
               </Tooltip>
+              </TooltipProvider>
             </CardTitle>
           </CardHeader>
           <CardContent>
@@ -179,6 +181,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
               <div className="flex items-center justify-between">
                 <Label htmlFor="iterations" className="flex items-center gap-2">
                   Iterationer
+                  <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <InfoIcon className="h-3.5 w-3.5 text-muted-foreground" />
@@ -189,6 +192,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
                       </p>
                     </TooltipContent>
                   </Tooltip>
+                  </TooltipProvider>
                 </Label>
                 <Badge variant="secondary" className="font-mono" data-testid="value-iterations">
                   {iterations}
@@ -210,6 +214,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
               <div className="flex items-center justify-between">
                 <Label htmlFor="angle" className="flex items-center gap-2">
                   Grenvinkel
+                  <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <InfoIcon className="h-3.5 w-3.5 text-muted-foreground" />
@@ -220,6 +225,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
                       </p>
                     </TooltipContent>
                   </Tooltip>
+                  </TooltipProvider>
                 </Label>
                 <Badge variant="secondary" className="font-mono" data-testid="value-angle">
                   {angle.toFixed(1)}°
@@ -241,6 +247,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
               <div className="flex items-center justify-between">
                 <Label htmlFor="stepSize" className="flex items-center gap-2">
                   Stegstorlek
+                  <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <InfoIcon className="h-3.5 w-3.5 text-muted-foreground" />
@@ -251,6 +258,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
                       </p>
                     </TooltipContent>
                   </Tooltip>
+                  </TooltipProvider>
                 </Label>
                 <Badge variant="secondary" className="font-mono" data-testid="value-stepsize">
                   {stepSize.toFixed(1)}
@@ -272,6 +280,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
               <div className="flex items-center justify-between">
                 <Label htmlFor="thickness" className="flex items-center gap-2">
                   Tjocklek
+                  <TooltipProvider>
                   <Tooltip>
                     <TooltipTrigger asChild>
                       <InfoIcon className="h-3.5 w-3.5 text-muted-foreground" />
@@ -282,6 +291,7 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
                       </p>
                     </TooltipContent>
                   </Tooltip>
+                  </TooltipProvider>
                 </Label>
                 <Badge variant="secondary" className="font-mono" data-testid="value-thickness">
                   {thickness.toFixed(1)}
