@@ -1,0 +1,47 @@
+[
+  {
+    "id": "1",
+    "commonName": "Ek",
+    "scientificName": "Quercus robur",
+    "axiom": "F",
+    "rules": {
+      "F": "FF-[-F+F+F]+[+F-F-F]"
+    },
+    "defaultAngle": 22.5,
+    "defaultStep": 1
+  },
+  {
+    "id": "2",
+    "commonName": "Tall",
+    "scientificName": "Pinus sylvestris",
+    "axiom": "X",
+    "rules": {
+      "X": "F-[[X]+X]+F[+FX]-X",
+      "F": "FF"
+    },
+    "defaultAngle": 20,
+    "defaultStep": 1.2
+  },
+  {
+    "id": "3",
+    "commonName": "Lönn",
+    "scientificName": "Acer platanoides",
+    "axiom": "F",
+    "rules": {
+        "F": "F[+F]F[-F]F"
+    },
+    "defaultAngle": 25.7,
+    "defaultStep": 0.9
+  },
+  {
+      "id": "4",
+      "commonName": "Björk",
+      "scientificName": "Betula pendula",
+      "axiom": "F",
+      "rules": {
+          "F": "F[+F]F[-F][F]"
+      },
+      "defaultAngle": 30,
+      "defaultStep": 1
+  }
+]
