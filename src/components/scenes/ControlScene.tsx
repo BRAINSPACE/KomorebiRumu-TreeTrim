@@ -2,10 +2,11 @@
 import '@react-three/fiber';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Grid } from '@react-three/drei';
-import { useMemo, useState, useEffect } from 'react';
+// fix: Import React and use React.hook to ensure proper JSX type resolution for R3F elements.
+import * as React from 'react';
 import { AlertCircle } from 'lucide-react';
 
-// fix: Use relative paths for imports
+// fix: Replaced alias paths with relative paths.
 import { useSimulationStore } from '../../store/simulationStore';
 import { generateLSystem, interpretLSystem } from '../../lib/lsystem';
 import { Tree3D } from '../3d/Tree3D';
@@ -21,13 +22,13 @@ export function ControlScene() {
     thickness,
   } = useSimulationStore();
 
-  const [webglSupported, setWebglSupported] = useState<boolean | null>(null);
+  const [webglSupported, setWebglSupported] = React.useState<boolean | null>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setWebglSupported(isWebGLAvailable());
   }, []);
 
-  const tree = useMemo(() => {
+  const tree = React.useMemo(() => {
     if (!selectedSpecies) return null;
     
     const lsystemString = generateLSystem({

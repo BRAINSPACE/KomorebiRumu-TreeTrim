@@ -1,11 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { InfoIcon, Scissors, RotateCcw, Download, Sparkles, AlertCircle } from 'lucide-react';
-import { useState, useEffect, useCallback } from 'react';
-import { GoogleGenAI } from '@google/genai';
-// fix: Use relative path for schema import
-import type { Species } from '../../shared/schema';
+import { InfoIcon, Scissors, RotateCcw, Download } from 'lucide-react';
+import { useEffect, useCallback } from 'react';
+import type { Species } from '@shared/schema';
 
-// fix: Use relative paths for component and store imports
+// fix: Replaced alias paths with relative paths.
 import { useSimulationStore } from '../../store/simulationStore';
 import { Button } from '../ui/button';
 import { Label } from '../ui/label';
@@ -16,7 +14,6 @@ import { Separator } from '../ui/separator';
 import { Badge } from '../ui/badge';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import { exportToPDF } from '../../lib/pdfExport';
-import { Alert, AlertDescription, AlertTitle } from '../ui/alert';
 import speciesData from '../../data/species.json';
 
 export function ControlPanel() {
@@ -35,10 +32,6 @@ export function ControlPanel() {
     clearPrunedBranches,
     resetSimulation,
   } = useSimulationStore();
-
-  const [aiAdvice, setAiAdvice] = useState<string>('');
-  const [isAiLoading, setIsAiLoading] = useState<boolean>(false);
-  const [aiError, setAiError] = useState<string>('');
 
   const { data: speciesList, isLoading } = useQuery<Species[]>({
     queryKey: ['species'],
@@ -75,41 +68,6 @@ export function ControlPanel() {
     await exportToPDF();
   };
   
-  const handleGetAdvice = async () => {
-    if (!selectedSpecies) return;
-    setIsAiLoading(true);
-    setAiAdvice('');
-    setAiError('');
-
-    try {
-      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY! });
-      
-      const prompt = `You are an expert arborist providing advice for a tree pruning simulator.
-The user is working with the following tree:
-- Species: ${selectedSpecies.commonName} (${selectedSpecies.scientificName})
-- Growth Iterations: ${iterations} (A higher number means a more mature, complex tree)
-- Branching Angle: ${angle} degrees
-- Step Size (Branch Length Factor): ${stepSize}
-
-Based on these parameters, the tree has a specific structure. The L-system axiom is "${selectedSpecies.axiom}" and the rules are ${JSON.stringify(selectedSpecies.rules)}.
-
-Please provide pruning advice for this tree to ensure healthy growth, strong structure, and good aesthetics. Your advice should be general but applicable to this species and its current growth stage. For example, mention things like removing crossing branches, improving light penetration, and establishing a strong central leader. Format your advice as a list of clear, actionable points. Keep it concise and easy to understand for a student of arboriculture.`;
-
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.5-flash',
-        contents: prompt,
-      });
-
-      setAiAdvice(response.text);
-
-    } catch (error) {
-      console.error("Error getting AI advice:", error);
-      setAiError("Kunde inte hämta råd från AI. Kontrollera din anslutning och API-nyckel.");
-    } finally {
-      setIsAiLoading(false);
-    }
-  };
-
   return (
     <div className="h-full overflow-y-auto bg-card border-l border-card-border" data-testid="panel-control">
       <div className="p-6 space-y-6">
@@ -341,38 +299,6 @@ Please provide pruning advice for this tree to ensure healthy growth, strong str
               <Download className="mr-2 h-4 w-4" />
               Exportera PDF
             </Button>
-          </CardContent>
-        </Card>
-
-        {/* AI Pruning Advice */}
-        <Card>
-          <CardHeader className="pb-3">
-            <CardTitle className="text-base flex items-center gap-2">
-              AI Beskärningsråd
-              <Sparkles className="h-4 w-4 text-primary" />
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            <Button
-              className="w-full"
-              onClick={handleGetAdvice}
-              disabled={isAiLoading || !selectedSpecies}
-              data-testid="button-get-advice"
-            >
-              {isAiLoading ? 'Hämtar råd...' : 'Få råd från Gemini'}
-            </Button>
-            {aiError && (
-              <Alert variant="destructive" className="mt-4">
-                <AlertCircle className="h-4 w-4" />
-                <AlertTitle>Fel</AlertTitle>
-                <AlertDescription>{aiError}</AlertDescription>
-              </Alert>
-            )}
-            {aiAdvice && !isAiLoading && (
-              <div className="mt-4 p-4 bg-muted/50 rounded-lg text-sm prose prose-sm prose-invert max-w-none">
-                <div dangerouslySetInnerHTML={{ __html: aiAdvice.replace(/\n/g, '<br />') }} />
-              </div>
-            )}
           </CardContent>
         </Card>
       </div>

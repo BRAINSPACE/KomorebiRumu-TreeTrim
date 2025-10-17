@@ -1,6 +1,5 @@
 import { create } from 'zustand';
-// fix: Use relative path for schema import
-import { Species } from '../shared/schema';
+import { Species } from '@shared/schema';
 
 interface SimulationState {
   selectedSpecies: Species | null;

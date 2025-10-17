@@ -1,7 +1,7 @@
 import * as React from "react"
 import * as SliderPrimitive from "@radix-ui/react-slider"
 
-// fix: Use relative path for utils import
+// fix: Replaced alias path with a relative path.
 import { cn } from "../../lib/utils"
 
 const Slider = React.forwardRef<

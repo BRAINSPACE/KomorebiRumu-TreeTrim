@@ -1,8 +1,9 @@
 // Add import for @react-three/fiber to augment JSX namespace for R3F elements.
 import '@react-three/fiber';
-import { useMemo } from 'react';
+// fix: Import React and use React.hook to ensure proper JSX type resolution for R3F elements.
+import * as React from 'react';
 import * as THREE from 'three';
-// fix: Use relative path for import
+// fix: Replaced alias path with a relative path.
 import { BranchSegment } from '../../lib/lsystem';
 
 interface Tree3DProps {
@@ -26,7 +27,7 @@ export function Tree3D({
   prunedBranches = new Set(),
   justPrunedSubtree = new Set(),
 }: Tree3DProps) {
-  const branches = useMemo(() => {
+  const branches = React.useMemo(() => {
     if (!tree) return [];
     const result: BranchSegment[] = [];
     
@@ -77,7 +78,7 @@ interface BranchProps {
 }
 
 function Branch({ branch, thickness, onClick, isHovered, isParentHovered, isJustPruned, onBranchHover }: BranchProps) {
-  const { geometry, position, rotation } = useMemo(() => {
+  const { geometry, position, rotation } = React.useMemo(() => {
     const start = new THREE.Vector3(...branch.start);
     const end = new THREE.Vector3(...branch.end);
     const direction = end.clone().sub(start);
@@ -105,14 +106,14 @@ function Branch({ branch, thickness, onClick, isHovered, isParentHovered, isJust
   }, [branch, thickness]);
 
   // Brown color gradient based on depth
-  const color = useMemo(() => {
+  const color = React.useMemo(() => {
     const hue = 30;
     const saturation = 40;
     const lightness = Math.max(20, 35 - branch.depth * 3);
     return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
   }, [branch.depth]);
 
-  const branchColor = useMemo(() => {
+  const branchColor = React.useMemo(() => {
     if (isJustPruned) return '#ef4444'; // Red for pruned flash
     if (isHovered) return '#ff9800'; // Orange for direct hover
     if (isParentHovered) return '#f5c98c'; // Lighter orange for parent hover

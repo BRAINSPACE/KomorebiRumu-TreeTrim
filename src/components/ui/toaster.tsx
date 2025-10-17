@@ -1,4 +1,4 @@
-// fix: Use relative paths for imports
+// fix: Replaced alias paths with relative paths.
 import {
   Toast,
   ToastClose,

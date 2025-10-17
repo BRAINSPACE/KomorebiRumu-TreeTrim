@@ -2,10 +2,11 @@
 import '@react-three/fiber';
 import { Canvas } from '@react-three/fiber';
 import { OrbitControls, Grid } from '@react-three/drei';
-import { useMemo, useState, useEffect } from 'react';
+// fix: Import React and use React.hook to ensure proper JSX type resolution for R3F elements.
+import * as React from 'react';
 import { AlertCircle } from 'lucide-react';
 
-// fix: Use relative paths for imports
+// fix: Replaced alias paths with relative paths.
 import { useSimulationStore } from '../../store/simulationStore';
 import { generateLSystem, interpretLSystem, findBranchSubtree, BranchSegment } from '../../lib/lsystem';
 import { Tree3D } from '../3d/Tree3D';
@@ -37,16 +38,16 @@ export function SimulationScene() {
     addPrunedBranch,
   } = useSimulationStore();
 
-  const [hoveredBranch, setHoveredBranch] = useState<string | null>(null);
-  const [hoveredParent, setHoveredParent] = useState<string | null>(null);
-  const [justPrunedSubtree, setJustPrunedSubtree] = useState<Set<string>>(new Set());
-  const [webglSupported, setWebglSupported] = useState<boolean | null>(null);
+  const [hoveredBranch, setHoveredBranch] = React.useState<string | null>(null);
+  const [hoveredParent, setHoveredParent] = React.useState<string | null>(null);
+  const [justPrunedSubtree, setJustPrunedSubtree] = React.useState<Set<string>>(new Set());
+  const [webglSupported, setWebglSupported] = React.useState<boolean | null>(null);
 
-  useEffect(() => {
+  React.useEffect(() => {
     setWebglSupported(isWebGLAvailable());
   }, []);
 
-  const fullTree = useMemo(() => {
+  const fullTree = React.useMemo(() => {
     if (!selectedSpecies) return null;
     
     const lsystemString = generateLSystem({
@@ -58,7 +59,7 @@ export function SimulationScene() {
     return interpretLSystem(lsystemString, angle, stepSize);
   }, [selectedSpecies, iterations, angle, stepSize]);
   
-  const tree = useMemo(() => {
+  const tree = React.useMemo(() => {
     if (!fullTree) return null;
 
     function filterTree(branch: BranchSegment): BranchSegment | null {

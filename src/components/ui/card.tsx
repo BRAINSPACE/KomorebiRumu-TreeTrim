@@ -1,6 +1,6 @@
 import * as React from "react"
 
-// fix: Use relative path for utils import
+// fix: Replaced alias path with a relative path.
 import { cn } from "../../lib/utils"
 
 const Card = React.forwardRef<

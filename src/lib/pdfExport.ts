@@ -1,7 +1,7 @@
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
-// fix: Use relative path for store import
+// fix: Replaced alias path with a relative path.
 import { useSimulationStore } from '../store/simulationStore';
 
 export async function exportToPDF() {

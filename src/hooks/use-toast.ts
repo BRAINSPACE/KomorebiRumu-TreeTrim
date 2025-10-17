@@ -1,7 +1,7 @@
 // This is a simplified implementation of the shadcn/ui use-toast hook.
 import * as React from "react"
 
-// fix: Use relative path for type import
+// fix: Replaced alias path with a relative path.
 import type { ToastActionElement, ToastProps } from "../components/ui/toast"
 
 const TOAST_LIMIT = 5
